@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfolio | Rafik ZEMOURI - Cybersécurité</title>
+    <style>
+        /* --- DESIGN SYSTEM --- */
+        :root {
+            --bg-color: #0f172a;
+            --card-bg: #1e293b;
+            --text-primary: #f8fafc;
+            --text-secondary: #94a3b8;
+            --accent-color: #38bdf8; 
+            --accent-hover: #0ea5e9;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; }
+        
+        body { background-color: var(--bg-color); color: var(--text-primary); line-height: 1.6; }
+
+        /* --- LAYOUT --- */
+        .container { max-width: 1000px; margin: 0 auto; padding: 20px; }
+        section { margin-bottom: 80px; }
+
+        /* --- HERO SECTION --- */
+        .hero { text-align: center; padding: 100px 20px; }
+        .hero h1 { font-size: 3rem; margin-bottom: 10px; color: var(--text-primary); }
+        .hero h2 { font-size: 1.5rem; color: var(--accent-color); margin-bottom: 20px; }
+        .hero p { color: var(--text-secondary); max-width: 600px; margin: 0 auto 30px auto; }
+        
+        .btn {
+            display: inline-block;
+            padding: 12px 24px;
+            background-color: var(--accent-color);
+            color: #000;
+            text-decoration: none;
+            font-weight: bold;
+            border-radius: 5px;
+            transition: 0.3s;
+        }
+        .btn:hover { background-color: var(--accent-hover); }
+
+        /* --- SKILLS --- */
+        .skills-grid { display: flex; flex-wrap: wrap; gap: 10px; justify-content: center; }
+        .skill-tag {
+            background-color: var(--card-bg);
+            padding: 8px 16px;
+            border-radius: 20px;
+            border: 1px solid #334155;
+            font-size: 0.9rem;
+        }
+
+        /* --- PROJECTS --- */
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+        }
+        .project-card {
+            background-color: var(--card-bg);
+            padding: 25px;
+            border-radius: 10px;
+            border-top: 3px solid var(--accent-color);
+            transition: transform 0.2s;
+        }
+        .project-card:hover { transform: translateY(-5px); }
+        .project-card h3 { margin-bottom: 10px; }
+        .project-card p { color: var(--text-secondary); font-size: 0.95rem; margin-bottom: 20px; }
+        .repo-link { color: var(--accent-color); text-decoration: none; font-weight: 600; }
+
+        /* --- CONTACT --- */
+        .footer { text-align: center; border-top: 1px solid #334155; padding-top: 40px; color: var(--text-secondary); }
+        
+        /* Mobile */
+        @media (max-width: 600px) { .hero h1 { font-size: 2rem; } }
+    </style>
+</head>
+<body>
+
+    <header class="hero">
+        <h1>Rafik ZEMOURI</h1>
+        <h2>Ingénieur Cybersécurité & DevOps</h2> 
+        <p>
+            Étudiant passionné avec une double compétence en Sécurité Opérationnelle (SOC) 
+            et Développement Web. À la recherche d'une alternance de 24 mois.
+        </p>
+        <a href="mailto:rafikzem1@gmail.com" class="btn">Me Contacter</a>
+        <a href="https://github.com/redraf97" target="_blank" class="btn" style="background:transparent; border:1px solid var(--accent-color); color:var(--accent-color); margin-left:10px;">Voir mon GitHub</a>
+    </header>
+
+    <div class="container">
+        
+        <section id="skills">
+            <h2 style="margin-bottom: 20px; border-left: 4px solid var(--accent-color); padding-left: 10px;">Compétences Techniques</h2>
+            <div class="skills-grid">
+                <span class="skill-tag">Splunk</span>
+                <span class="skill-tag">Wazuh</span>
+                <span class="skill-tag">Suricata</span>
+                <span class="skill-tag">MITRE ATT&CK</span>
+                <span class="skill-tag">Pentest (Burp, Metasploit)</span>
+                <span class="skill-tag">Docker</span>
+                <span class="skill-tag">ReactJS</span>
+                <span class="skill-tag">Node.js</span>
+                <span class="skill-tag">Python</span>
+                <span class="skill-tag">Linux</span>
+            </div>
+        </section>
+
+        <section id="projects">
+            <h2 style="margin-bottom: 20px; border-left: 4px solid var(--accent-color); padding-left: 10px;">Projets Récents</h2>
+            <div class="projects-grid">
+                
+                <article class="project-card">
+                    <h3>🛒 Site E-Commerce</h3>
+                    <p>
+                        Développement complet d'une plateforme de vente en ligne.
+                        Gestion du front-end et back-end, sécurisation des transactions 
+                        et gestion de base de données.
+                    </p>
+                    <p style="font-size: 0.8rem; color: #64748b;">Tech: React, Node.js, MySQL</p>
+                    <a href="https://github.com/redraf97/site-test-e-comerce" target="_blank" class="repo-link">Voir le Code →</a>
+                </article>
+
+                <article class="project-card">
+                    <h3>🚀 SaaS MVP</h3>
+                    <p>
+                        Création d'un Minimum Viable Product pour une solution SaaS.
+                        Focus sur l'architecture, le déploiement Docker et l'expérience utilisateur.
+                        Illustre mes compétences en gestion de projet IT.
+                    </p>
+                    <p style="font-size: 0.8rem; color: #64748b;">Tech: Docker, DevOps, Web</p>
+                    <a href="https://github.com/redraf97/my-saas-mvp" target="_blank" class="repo-link">Voir le Code →</a>
+                </article>
+
+                <article class="project-card">
+                    <h3>🚩 Write-ups RootMe & CTF</h3>
+                    <p>
+                        Documentation technique de mes challenges de sécurité :
+                        Pentest web, Forensics et exploitation de vulnérabilités.
+                        Démontre ma méthodologie d'analyse et de rédaction.
+                    </p>
+                    <p style="font-size: 0.8rem; color: #64748b;">Tech: Markdown, Pentest, Forensic</p>
+                    <a href="https://github.com/redraf97/rootme-challenges" target="_blank" class="repo-link">Lire les Write-ups →</a>
+                </article>
+
+            </div>
+        </section>
+
+    </div>
+
+    <footer class="footer">
+        <p>© 2024 Rafik ZEMOURI - Basé à Clichy, France</p>
+        <p>
+            <a href="https://www.linkedin.com/in/rafikzemouri" style="color:var(--accent-color)">LinkedIn</a> • 
+            <a href="mailto:rafikzem1@gmail.com" style="color:var(--accent-color)">rafikzem1@gmail.com</a>
+        </p>
+    </footer>
+
+</body>
+</html>
