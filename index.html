@@ -381,7 +381,7 @@
             glitchText.addEventListener('mouseover', startDecryptAnimation);
 
             /* ==========================================================================
-               2. SYSTÈME DE PARTICULES (BACKGROUND CANVAS)
+               2. SYSTÈME DE PARTICULES (BACKGROUND CANVAS) - VERSION PLUS VISIBLE
                ========================================================================== */
             const canvas = document.getElementById("particles");
             const ctx = canvas.getContext("2d");
@@ -389,10 +389,10 @@
             let width, height;
             let particles = [];
             
-            // Configuration ajustable
-            const particleCount = 60; // Gardé bas pour les performances
-            const connectionDistance = 140;
-            const mouseInteractionDistance = 180;
+            // Configuration ajustée pour plus de visibilité
+            const particleCount = 85; // Un peu plus de particules
+            const connectionDistance = 150;
+            const mouseInteractionDistance = 250; // Le curseur interagit de plus loin
 
             function resize() {
                 width = canvas.width = window.innerWidth;
@@ -405,32 +405,31 @@
                 constructor() {
                     this.x = Math.random() * width;
                     this.y = Math.random() * height;
-                    this.vx = (Math.random() - 0.5) * 0.4; // Mouvement très subtil
+                    this.vx = (Math.random() - 0.5) * 0.4; 
                     this.vy = (Math.random() - 0.5) * 0.4;
-                    this.radius = Math.random() * 1.5 + 0.5;
+                    // Particules légèrement plus grandes
+                    this.radius = Math.random() * 2 + 1; 
                 }
                 update() {
                     this.x += this.vx;
                     this.y += this.vy;
                     
-                    // Rebond naturel sur les bords
                     if(this.x < 0 || this.x > width) this.vx *= -1;
                     if(this.y < 0 || this.y > height) this.vy *= -1;
                 }
                 draw() {
                     ctx.beginPath();
                     ctx.arc(this.x, this.y, this.radius, 0, Math.PI * 2);
-                    ctx.fillStyle = "rgba(6, 182, 212, 0.4)"; 
+                    // Opacité augmentée de 0.4 à 0.8 pour mieux les voir
+                    ctx.fillStyle = "rgba(6, 182, 212, 0.8)"; 
                     ctx.fill();
                 }
             }
 
-            // Initialisation des particules
             for(let i=0; i<particleCount; i++) {
                 particles.push(new Particle());
             }
 
-            // Gestion de la souris
             let mouse = { x: null, y: null };
             window.addEventListener('mousemove', (e) => {
                 mouse.x = e.x;
@@ -441,7 +440,6 @@
                 mouse.y = null;
             });
 
-            // Boucle d'animation principale
             function animate() {
                 ctx.clearRect(0, 0, width, height);
                 
@@ -449,7 +447,7 @@
                     particles[i].update();
                     particles[i].draw();
                     
-                    // Lignes entre les particules
+                    // Lignes violettes entre les particules
                     for(let j=i; j<particles.length; j++) {
                         const dx = particles[i].x - particles[j].x;
                         const dy = particles[i].y - particles[j].y;
@@ -459,13 +457,14 @@
                             ctx.beginPath();
                             ctx.moveTo(particles[i].x, particles[i].y);
                             ctx.lineTo(particles[j].x, particles[j].y);
-                            ctx.strokeStyle = `rgba(139, 92, 246, ${0.2 * (1 - dist/connectionDistance)})`; 
+                            // Opacité de base augmentée de 0.2 à 0.4
+                            ctx.strokeStyle = `rgba(139, 92, 246, ${0.4 * (1 - dist/connectionDistance)})`; 
                             ctx.lineWidth = 1;
                             ctx.stroke();
                         }
                     }
 
-                    // Ligne avec la souris (Effet Radar)
+                    // Ligne cyan avec la souris (Effet Radar)
                     if(mouse.x != null) {
                         const dxMouse = particles[i].x - mouse.x;
                         const dyMouse = particles[i].y - mouse.y;
@@ -475,8 +474,9 @@
                             ctx.beginPath();
                             ctx.moveTo(particles[i].x, particles[i].y);
                             ctx.lineTo(mouse.x, mouse.y);
-                            ctx.strokeStyle = `rgba(6, 182, 212, ${0.4 * (1 - distMouse/mouseInteractionDistance)})`;
-                            ctx.lineWidth = 1;
+                            // Opacité augmentée (0.9) et trait un peu plus épais (1.5)
+                            ctx.strokeStyle = `rgba(6, 182, 212, ${0.9 * (1 - distMouse/mouseInteractionDistance)})`;
+                            ctx.lineWidth = 1.5;
                             ctx.stroke();
                         }
                     }
